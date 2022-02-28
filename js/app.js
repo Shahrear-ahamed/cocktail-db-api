@@ -50,23 +50,37 @@ const showNonAlcohol = (nonAlcohols) => {
     nonAlcoholContainer.appendChild(div);
   });
 };
-
-
 // show search results by btn
 const searchInput = document.getElementById("search-input");
+const container = document.getElementById("container");
 document.getElementById("search-btn").addEventListener("click", () => {
-    searchByResult(searchInput.value);
-    searchInput.value="";
+  searchByResult(searchInput.value);
+  searchInput.value = "";
+  container.textContent = "";
 });
-
-const searchByResult = (resultItems)=> {
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${resultItems}`;
-    fetch(url)
-    .then (res=>res.json())
-    .then((data=>loadSearchDrinks(data.drinks)))
-}
-const loadSearchDrinks=(searchDrinks) => {
-    searchDrinks.forEach((drink) =>{
-        console.log(drink);
-    })
-}
+const searchByResult = (resultItems) => {
+  document.getElementById("result-drink-container").innerHTML = "";
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${resultItems}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => loadSearchDrinks(data.drinks));
+};
+const loadSearchDrinks = (searchDrinks) => {
+  const searchResult = document.getElementById("result-drink-container");
+  searchDrinks.forEach((drink) => {
+    console.log(drink);
+    const div = document.createElement("div");
+    div.classList.add("col");
+    div.innerHTML = `
+    <div class="card h-100">
+        <img src="${drink.strDrinkThumb}" class="card-img-top w-100" alt="..." />
+        <div class="card-body">
+        <h5 class="card-title">${drink.strDrink}</h5>
+        <p>${drink.strAlcoholic}</p>
+        <p>${drink.strGlass}</p>
+        </div>
+      </div>
+    `;
+    searchResult.appendChild(div);
+  });
+};

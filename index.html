@@ -31,7 +31,11 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button id="search-btn" class="btn btn-outline-success" type="submit">
+            <button
+              id="search-btn"
+              class="btn btn-outline-success"
+              type="submit"
+            >
               Search
             </button>
           </div>
@@ -41,9 +45,11 @@
 
     <!-- main section are here  -->
     <main>
-      <section class="container">
+      <section id="container" class="container">
         <div class="alcohol">
-          <h3 class="mt-4 mb-3 pb-2 border-bottom border-2">Alcoholic Drinks</h3>
+          <h3 class="mt-4 mb-3 pb-2 border-bottom border-2">
+            Alcoholic Drinks
+          </h3>
           <div
             id="alcohol-container"
             class="row row-cols-1 row-cols-md-4 g-4"
@@ -52,13 +58,30 @@
 
         <!-- non alcohol div  -->
         <div class="alcohol">
-          <h3 class="mt-4 mb-3 pb-2 border-bottom border-2">Non-Alcoholic Drinks</h3>
+          <h3 class="mt-4 mb-3 pb-2 border-bottom border-2">
+            Non-Alcoholic Drinks
+          </h3>
           <div
             id="non-alcohol-container"
             class="row row-cols-1 row-cols-md-4 g-4"
           ></div>
         </div>
       </section>
+      <section>
+        <!-- search result show -->
+        <div class="container result-container">
+          <h3 class="mt-4 mb-3 pb-2 border-bottom border-2 d-none">Search result</h3>
+          <div
+            id="result-drink-container"
+            class="row row-cols-1 row-cols-md-4 g-4"
+          ></div>
+        </div>
+      </section>
+
+      <!-- result section
+      <section>
+        
+      </section> -->
     </main>
     <!-- javascript -->
     <script src="./js/app.js"></script>
